@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💕 Happy Valentine's Day 💕</title>
+    <meta name="description" content="The most beautiful Valentine's Day experience on the internet. A celebration of love.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💝</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Poppins:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader-content">
+            <div class="loader-3d-heart">
+                <div class="heart-3d">
+                    <div class="heart-face front"></div>
+                    <div class="heart-face back"></div>
+                </div>
+            </div>
+            <div class="loader-text-wrap">
+                <div class="loader-progress-bar">
+                    <div class="loader-progress-fill" id="loader-fill"></div>
+                </div>
+                <p class="loader-text">Preparing something magical...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cinematic Curtain -->
+    <div class="curtain" id="curtain">
+        <div class="curtain-left"></div>
+        <div class="curtain-right"></div>
+    </div>
+
+    <!-- Canvases -->
+    <canvas id="stars-canvas"></canvas>
+    <canvas id="hearts-canvas"></canvas>
+
+    <!-- Custom Cursor -->
+    <div class="custom-cursor" id="cursor">
+        <div class="cursor-dot"></div>
+        <div class="cursor-ring"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-logo">
+            <svg class="logo-heart-svg" viewBox="0 0 32 32" width="26" height="26">
+                <path d="M16 28s-1.5-1.2-3.8-3.2C6.3 19.5 2 15.2 2 10.7 2 7 5 4 8.7 4c2.2 0 4.3 1 5.6 2.7h3.4C19 5 21.1 4 23.3 4 27 4 30 7 30 10.7c0 4.5-4.3 8.8-10.2 14.1C17.5 26.8 16 28 16 28z" fill="url(#hg)"/>
+                <defs><linearGradient id="hg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#ff1744"/><stop offset="100%" stop-color="#e91e63"/></linearGradient></defs>
+            </svg>
+            <span class="logo-text">Valentine</span>
+        </div>
+        <div class="nav-links" id="nav-links">
+            <a href="#home" class="nav-link active">Home</a>
+            <a href="#countdown" class="nav-link">Countdown</a>
+            <a href="#love-story" class="nav-link">Story</a>
+            <a href="#gallery" class="nav-link">Gallery</a>
+            <a href="#poems" class="nav-link">Poems</a>
+            <a href="#love-letter" class="nav-link">Letter</a>
+            <a href="#promise" class="nav-link">Promises</a>
+        </div>
+        <div class="nav-right">
+            <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Nav -->
+    <div class="mobile-nav" id="mobile-nav">
+        <div class="mobile-nav-content">
+            <a href="#home" class="mobile-link"><span>01</span> Home</a>
+            <a href="#countdown" class="mobile-link"><span>02</span> Countdown</a>
+            <a href="#love-story" class="mobile-link"><span>03</span> Story</a>
+            <a href="#gallery" class="mobile-link"><span>04</span> Gallery</a>
+            <a href="#poems" class="mobile-link"><span>05</span> Poems</a>
+            <a href="#love-letter" class="mobile-link"><span>06</span> Letter</a>
+            <a href="#promise" class="mobile-link"><span>07</span> Promises</a>
+        </div>
+    </div>
+
+    <!-- SECTION 1: HERO -->
+    <section id="home" class="hero-section">
+        <div class="hero-gradient-orbs">
+            <div class="orb orb-1"></div>
+            <div class="orb orb-2"></div>
+            <div class="orb orb-3"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <div class="badge-glow"></div>
+                <span>💝</span>
+                <span class="badge-text">Together Since January 1, 2025</span>
+                <span>💝</span>
+            </div>
+            <div class="hero-title-wrap">
+                <div class="title-line-wrap"><h1 class="hero-line hero-line-1">Happy</h1></div>
+                <div class="title-line-wrap"><h1 class="hero-line hero-line-2">Valentine's</h1></div>
+                <div class="title-line-wrap"><h1 class="hero-line hero-line-3">Day</h1></div>
+            </div>
+            <div class="hero-divider">
+                <span class="divider-line"></span>
+                <div class="divider-heart"><div class="heartbeat-ring"></div><span>❤️</span></div>
+                <span class="divider-line"></span>
+            </div>
+            <p class="hero-subtitle">
+                <span class="typewriter" id="typewriter"></span><span class="typewriter-cursor">|</span>
+            </p>
+            <div class="hero-buttons">
+                <a href="#love-letter" class="magnetic-btn btn-primary">
+                    <span class="btn-bg"></span>
+                    <span class="btn-text">Read My Love Letter</span>
+                    <span class="btn-icon">💌</span>
+                </a>
+                <a href="#love-story" class="magnetic-btn btn-outline">
+                    <span class="btn-text">Our Story</span>
+                    <span class="btn-icon">📖</span>
+                </a>
+            </div>
+            <div class="scroll-indicator">
+                <div class="scroll-line"><div class="scroll-dot"></div></div>
+                <span class="scroll-text">Discover Our Love</span>
+            </div>
+        </div>
+        <div class="hero-floating-elements">
+            <div class="float-el" style="--delay:0;--x:10%;--y:20%">💕</div>
+            <div class="float-el" style="--delay:1;--x:85%;--y:15%">🌹</div>
+            <div class="float-el" style="--delay:2;--x:75%;--y:75%">💖</div>
+            <div class="float-el" style="--delay:3;--x:15%;--y:70%">✨</div>
+            <div class="float-el" style="--delay:4;--x:50%;--y:85%">💗</div>
+            <div class="float-el" style="--delay:5;--x:90%;--y:50%">🦋</div>
+            <div class="float-el" style="--delay:6;--x:5%;--y:45%">💝</div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: COUNTDOWN -->
+    <section id="countdown" class="countdown-section">
+        <div class="wave-top"><svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0,60 C360,120 720,0 1080,60 C1260,90 1380,30 1440,60 L1440,0 L0,0Z" fill="currentColor"/></svg></div>
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">⏰ Together</span>
+                <h2 class="section-title">Our Time In Love</h2>
+                <p class="section-sub">Every second since January 1, 2025 has been magical</p>
+                <div class="title-accent"><span>♥</span></div>
+            </div>
+            <div class="countdown-grid">
+                <div class="countdown-card">
+                    <div class="cd-glow"></div>
+                    <svg class="cd-ring" viewBox="0 0 120 120"><circle cx="60" cy="60" r="52" class="ring-bg"/><circle cx="60" cy="60" r="52" class="ring-fill" id="ring-days"/></svg>
+                    <div class="cd-inner">
+                        <div class="cd-value" id="cd-days">00</div>
+                        <div class="cd-label">Days</div>
+                    </div>
+                </div>
+                <div class="countdown-card">
+                    <div class="cd-glow"></div>
+                    <svg class="cd-ring" viewBox="0 0 120 120"><circle cx="60" cy="60" r="52" class="ring-bg"/><circle cx="60" cy="60" r="52" class="ring-fill" id="ring-hours"/></svg>
+                    <div class="cd-inner">
+                        <div class="cd-value" id="cd-hours">00</div>
+                        <div class="cd-label">Hours</div>
+                    </div>
+                </div>
+                <div class="countdown-card">
+                    <div class="cd-glow"></div>
+                    <svg class="cd-ring" viewBox="0 0 120 120"><circle cx="60" cy="60" r="52" class="ring-bg"/><circle cx="60" cy="60" r="52" class="ring-fill" id="ring-minutes"/></svg>
+                    <div class="cd-inner">
+                        <div class="cd-value" id="cd-minutes">00</div>
+                        <div class="cd-label">Minutes</div>
+                    </div>
+                </div>
+                <div class="countdown-card">
+                    <div class="cd-glow"></div>
+                    <svg class="cd-ring" viewBox="0 0 120 120"><circle cx="60" cy="60" r="52" class="ring-bg"/><circle cx="60" cy="60" r="52" class="ring-fill" id="ring-seconds"/></svg>
+                    <div class="cd-inner">
+                        <div class="cd-value" id="cd-seconds">00</div>
+                        <div class="cd-label">Seconds</div>
+                    </div>
+                </div>
+            </div>
+            <p class="cd-message" id="cd-message">💕 Counting every heartbeat since the day we fell in love 💕</p>
+        </div>
+    </section>
+
+    <!-- SECTION 3: STATS -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card" data-count="410"><div class="stat-icon-wrap"><span>💕</span></div><div class="stat-number">0</div><div class="stat-label">Days of Love</div></div>
+                <div class="stat-card" data-count="9840"><div class="stat-icon-wrap"><span>💋</span></div><div class="stat-number">0</div><div class="stat-label">Hours Together</div></div>
+                <div class="stat-card" data-count="590400"><div class="stat-icon-wrap"><span>🌹</span></div><div class="stat-number">0</div><div class="stat-label">Minutes in Love</div></div>
+                <div class="stat-card" data-count="999"><div class="stat-icon-wrap"><span>✨</span></div><div class="stat-number">0</div><div class="stat-label">Reasons I Love You</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: LOVE STORY -->
+    <section id="love-story" class="story-section">
+        <div class="section-header">
+            <span class="section-tag">💑 Journey</span>
+            <h2 class="section-title">Our Love Story</h2>
+            <p class="section-sub">Every love story is beautiful, but ours is my favorite</p>
+            <div class="title-accent"><span>♥</span></div>
+        </div>
+        <div class="container">
+            <div class="timeline">
+                <div class="timeline-line"><div class="timeline-line-fill" id="timeline-fill"></div></div>
+                <div class="timeline-item" data-side="left">
+                    <div class="timeline-dot"><div class="dot-ring"></div><span>💫</span></div>
+                    <div class="timeline-card"><div class="card-shine"></div><div class="timeline-date">January 1, 2025</div><h3>The Day It All Began ✨</h3><p>New Year's Day 2025 — the first day of a brand new year, and the first day of our love story. In a world of billions, somehow our paths crossed at just the right moment. Nothing has been the same since.</p><div class="card-deco">🥰</div></div>
+                </div>
+                <div class="timeline-item" data-side="right">
+                    <div class="timeline-dot"><div class="dot-ring"></div><span>💕</span></div>
+                    <div class="timeline-card"><div class="card-shine"></div><div class="timeline-date">Early 2025</div><h3>Falling Deeper 💬</h3><p>Every conversation felt like it could last forever. Every laugh, every shared silence felt like coming home. That's when we knew — this wasn't just a spark. This was a flame that would burn forever.</p><div class="card-deco">😊</div></div>
+                </div>
+                <div class="timeline-item" data-side="left">
+                    <div class="timeline-dot"><div class="dot-ring"></div><span>🌹</span></div>
+                    <div class="timeline-card"><div class="card-shine"></div><div class="timeline-date">Spring 2025</div><h3>Butterflies & Magic 🦋</h3><p>Nervous hands, racing hearts, and the most beautiful smile. Time stopped when we were together, and every moment felt like a scene from the most beautiful love story ever written.</p><div class="card-deco">🦋</div></div>
+                </div>
+                <div class="timeline-item" data-side="right">
+                    <div class="timeline-dot"><div class="dot-ring"></div><span>❤️</span></div>
+                    <div class="timeline-card"><div class="card-shine"></div><div class="timeline-date">Summer – Winter 2025</div><h3>Through Every Season 💝</h3><p>Spring blossoms, summer adventures, autumn cuddles, winter warmth. Every season only made our love stronger. We built a love that could weather any storm and shine brighter than any sun.</p><div class="card-deco">💝</div></div>
+                </div>
+                <div class="timeline-item" data-side="left">
+                    <div class="timeline-dot"><div class="dot-ring"></div><span>💍</span></div>
+                    <div class="timeline-card"><div class="card-shine"></div><div class="timeline-date">February 14, 2026</div><h3>Our First Valentine's Day Together 💞</h3><p>410 days of love and counting. Every day we fall in love all over again. This Valentine's Day marks 1 year and 44 days of the most beautiful journey — and this is only the beginning of forever.</p><div class="card-deco">💞</div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PHOTO STRIP (autoscrolling) -->
+    <section class="photo-strip-section">
+        <div class="photo-strip">
+            <div class="photo-strip-track">
+                <img src="imagesandvideos/IMG_0680.jpg" alt="" loading="lazy">
+                <img src="imagesandvideos/IMG_0724.JPG.jpeg" alt="" loading="lazy">
+                <img src="imagesandvideos/IMG_0725.JPG.jpeg" alt="" loading="lazy">
+                <img src="imagesandvideos/IMG_0726.JPG.jpeg" alt="" loading="lazy">
+                <img src="imagesandvideos/IMG_0727.JPG.jpeg" alt="" loading="lazy">
+                <img src="imagesandvideos/IMG_0728.JPG.jpeg" alt="" loading="lazy">
+                <img src="imagesandvideos/IMG_0730.JPG.jpeg" alt="" loading="lazy">
+                <img src="imagesandvideos/IMG_0732.JPG.jpeg" alt="" loading="lazy">
+                <img src="imagesandvideos/IMG_0733.JPG.jpeg" alt="" loading="lazy">
+                <img src="imagesandvideos/IMG_7521.JPG.jpeg" alt="" loading="lazy">
+                <img src="imagesandvideos/IMG_7729.JPG.jpeg" alt="" loading="lazy">
+                <img src="imagesandvideos/IMG_8891.jpg" alt="" loading="lazy">
+                <img src="imagesandvideos/IMG_9158.JPG.jpeg" alt="" loading="lazy">
+                <img src="imagesandvideos/IMG_9438.JPG.jpeg" alt="" loading="lazy">
+                <!-- Duplicate for seamless loop -->
+                <img src="imagesandvideos/IMG_0680.jpg" alt="" loading="lazy">
+                <img src="imagesandvideos/IMG_0724.JPG.jpeg" alt="" loading="lazy">
+                <img src="imagesandvideos/IMG_0725.JPG.jpeg" alt="" loading="lazy">
+                <img src="imagesandvideos/IMG_0726.JPG.jpeg" alt="" loading="lazy">
+                <img src="imagesandvideos/IMG_0727.JPG.jpeg" alt="" loading="lazy">
+                <img src="imagesandvideos/IMG_0728.JPG.jpeg" alt="" loading="lazy">
+                <img src="imagesandvideos/IMG_0730.JPG.jpeg" alt="" loading="lazy">
+                <img src="imagesandvideos/IMG_0732.JPG.jpeg" alt="" loading="lazy">
+                <img src="imagesandvideos/IMG_0733.JPG.jpeg" alt="" loading="lazy">
+                <img src="imagesandvideos/IMG_7521.JPG.jpeg" alt="" loading="lazy">
+                <img src="imagesandvideos/IMG_7729.JPG.jpeg" alt="" loading="lazy">
+                <img src="imagesandvideos/IMG_8891.jpg" alt="" loading="lazy">
+                <img src="imagesandvideos/IMG_9158.JPG.jpeg" alt="" loading="lazy">
+                <img src="imagesandvideos/IMG_9438.JPG.jpeg" alt="" loading="lazy">
+            </div>
+        </div>
+    </section>
+
+    <!-- PARALLAX QUOTE -->
+    <section class="parallax-quote-section">
+        <div class="parallax-overlay"></div>
+        <div class="parallax-bg-photo" style="background-image: url('imagesandvideos/IMG_7729.JPG.jpeg')"></div>
+        <div class="container">
+            <blockquote class="parallax-quote">
+                <div class="quote-mark">"</div>
+                <p class="quote-text">I have found the one whom my soul loves.</p>
+                <cite class="quote-cite">— Song of Solomon 3:4</cite>
+            </blockquote>
+        </div>
+    </section>
+
+    <!-- SECTION 5: GALLERY -->
+    <section id="gallery" class="gallery-section">
+        <div class="section-header">
+            <span class="section-tag">📸 Memories</span>
+            <h2 class="section-title">Our Gallery of Love</h2>
+            <p class="section-sub">Real moments, real love — every photo tells our story</p>
+            <div class="title-accent"><span>♥</span></div>
+        </div>
+        <div class="container">
+            <div class="gallery-masonry">
+            
+                <div class="gallery-item" data-tilt data-lightbox="imagesandvideos/IMG_0724.JPG.jpeg">
+                    <img src="imagesandvideos/IMG_0724.JPG.jpeg" alt="Sweet memories" class="gi-img" loading="lazy">
+                    <div class="gi-overlay"><span class="gi-num">02</span><h4>Sweet Memories</h4><p>Every second with you is magic ✨</p></div>
+                </div>
+                <div class="gallery-item" data-tilt data-lightbox="imagesandvideos/IMG_0725.JPG.jpeg">
+                    <img src="imagesandvideos/IMG_0725.JPG.jpeg" alt="Together forever" class="gi-img" loading="lazy">
+                    <div class="gi-overlay"><span class="gi-num">03</span><h4>Together Forever</h4><p>Side by side, heart to heart 💖</p></div>
+                </div>
+                <div class="gallery-item gi-wide" data-tilt data-lightbox="imagesandvideos/IMG_0726.JPG.jpeg">
+                    <img src="imagesandvideos/IMG_0726.JPG.jpeg" alt="Our love story" class="gi-img" loading="lazy">
+                    <div class="gi-overlay"><span class="gi-num">04</span><h4>Our Love Story</h4><p>Written in the stars 🌟</p></div>
+                </div>
+                <div class="gallery-item gi-tall" data-tilt data-lightbox="imagesandvideos/IMG_0727.JPG.jpeg">
+                    <img src="imagesandvideos/IMG_0727.JPG.jpeg" alt="Perfect moments" class="gi-img" loading="lazy">
+                    <div class="gi-overlay"><span class="gi-num">05</span><h4>Perfect Moments</h4><p>You make every moment perfect 🌹</p></div>
+                </div>
+                <div class="gallery-item" data-tilt data-lightbox="imagesandvideos/IMG_0728.JPG.jpeg">
+                    <img src="imagesandvideos/IMG_0728.JPG.jpeg" alt="Happiness" class="gi-img" loading="lazy">
+                    <div class="gi-overlay"><span class="gi-num">06</span><h4>Pure Happiness</h4><p>My favorite place is next to you 💗</p></div>
+                </div>
+                <div class="gallery-item" data-tilt data-lightbox="imagesandvideos/IMG_0730.JPG.jpeg">
+                    <img src="imagesandvideos/IMG_0730.JPG.jpeg" alt="Cherished moments" class="gi-img" loading="lazy">
+                    <div class="gi-overlay"><span class="gi-num">07</span><h4>Cherished</h4><p>Treasured moments with you 🥰</p></div>
+                </div>
+                <div class="gallery-item gi-wide" data-tilt data-lightbox="imagesandvideos/IMG_0732.JPG.jpeg">
+                    <img src="imagesandvideos/IMG_0732.JPG.jpeg" alt="Unforgettable" class="gi-img" loading="lazy">
+                    <div class="gi-overlay"><span class="gi-num">08</span><h4>Unforgettable</h4><p>Moments I'll never forget 💝</p></div>
+                </div>
+                <div class="gallery-item" data-tilt data-lightbox="imagesandvideos/IMG_0733.JPG.jpeg">
+                    <img src="imagesandvideos/IMG_0733.JPG.jpeg" alt="Adventures" class="gi-img" loading="lazy">
+                    <div class="gi-overlay"><span class="gi-num">09</span><h4>Adventures</h4><p>Life's greatest adventure is us 🦋</p></div>
+                </div>
+                <div class="gallery-item gi-tall" data-tilt data-lightbox="imagesandvideos/IMG_7521.JPG.jpeg">
+                    <img src="imagesandvideos/IMG_7521.JPG.jpeg" alt="Special day" class="gi-img" loading="lazy">
+                    <div class="gi-overlay"><span class="gi-num">10</span><h4>Special Day</h4><p>Every day with you is special 💫</p></div>
+                </div>
+                <div class="gallery-item" data-tilt data-lightbox="imagesandvideos/IMG_7729.JPG.jpeg">
+                    <img src="imagesandvideos/IMG_7729.JPG.jpeg" alt="My everything" class="gi-img" loading="lazy">
+                    <div class="gi-overlay"><span class="gi-num">11</span><h4>My Everything</h4><p>You are my whole world 🌍</p></div>
+                </div>
+                <div class="gallery-item" data-tilt data-lightbox="imagesandvideos/IMG_8891.jpg">
+                    <img src="imagesandvideos/IMG_8891.jpg" alt="Forever love" class="gi-img" loading="lazy">
+                    <div class="gi-overlay"><span class="gi-num">12</span><h4>Forever Love</h4><p>Now and always 💞</p></div>
+                </div>
+                <div class="gallery-item gi-wide" data-tilt data-lightbox="imagesandvideos/IMG_9158.JPG.jpeg">
+                    <img src="imagesandvideos/IMG_9158.JPG.jpeg" alt="Soulmates" class="gi-img" loading="lazy">
+                    <div class="gi-overlay"><span class="gi-num">13</span><h4>Soulmates</h4><p>Two souls, one heartbeat 💓</p></div>
+                </div>
+                <div class="gallery-item" data-tilt data-lightbox="imagesandvideos/IMG_9438.JPG.jpeg">
+                    <img src="imagesandvideos/IMG_9438.JPG.jpeg" alt="Dreamland" class="gi-img" loading="lazy">
+                    <div class="gi-overlay"><span class="gi-num">14</span><h4>Dreamland</h4><p>Living my dream with you 💭</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VIDEO SHOWCASE -->
+    <section class="video-section">
+        <div class="section-header">
+            <span class="section-tag">🎬 Moments</span>
+            <h2 class="section-title">Our Love in Motion</h2>
+            <p class="section-sub">Videos that capture the magic between us</p>
+            <div class="title-accent"><span>♥</span></div>
+        </div>
+        <div class="container">
+            <div class="video-grid">
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <video src="imagesandvideos/IMG_0723.MP4" controls playsinline preload="metadata" poster="imagesandvideos/IMG_0724.JPG.jpeg"></video>
+                        <div class="video-play-overlay" id="vplay-1">
+                            <div class="play-btn-circle">
+                                <svg viewBox="0 0 24 24" width="32" height="32"><path d="M8 5v14l11-7z" fill="white"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h4>💕 Our Special Moment</h4>
+                        <p>A beautiful memory we'll treasure forever</p>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <video src="imagesandvideos/IMG_0729.MP4" controls playsinline preload="metadata" poster="imagesandvideos/IMG_0730.JPG.jpeg"></video>
+                        <div class="video-play-overlay" id="vplay-2">
+                            <div class="play-btn-circle">
+                                <svg viewBox="0 0 24 24" width="32" height="32"><path d="M8 5v14l11-7z" fill="white"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h4>💖 A Moment of Magic</h4>
+                        <p>Every second with you is unforgettable</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 6: POEMS -->
+    <section id="poems" class="poems-section">
+        <div class="section-header">
+            <span class="section-tag">📝 Poetry</span>
+            <h2 class="section-title">Words From My Heart</h2>
+            <p class="section-sub">Poetry written with the ink of my soul</p>
+            <div class="title-accent"><span>♥</span></div>
+        </div>
+        <div class="container">
+            <div class="poems-stage">
+                <div class="poem-card active" data-poem="0">
+                    <div class="poem-glow"></div>
+                    <div class="poem-qm">"</div>
+                    <h3>You Are My Everything</h3>
+                    <div class="poem-body">
+                        <p>In the garden of my heart,<br>You bloom like the rarest rose,<br>Your love is the sweetest art,<br>A masterpiece that forever grows.</p>
+                        <p>With every beat, my heart sings your name,<br>In whispers soft as the morning dew,<br>My love for you, an eternal flame,<br>Forever and always, I choose you.</p>
+                    </div>
+                    <div class="poem-deco">🌹</div>
+                </div>
+                <div class="poem-card" data-poem="1">
+                    <div class="poem-glow"></div>
+                    <div class="poem-qm">"</div>
+                    <h3>My Universe</h3>
+                    <div class="poem-body">
+                        <p>You are the sun that lights my day,<br>The moon that guides my darkest night,<br>The stars that show me the way,<br>My universe, my guiding light.</p>
+                        <p>In your arms I found my home,<br>In your eyes I see forever,<br>With you, I'll never be alone,<br>Our hearts beat as one, together.</p>
+                    </div>
+                    <div class="poem-deco">🌙</div>
+                </div>
+                <div class="poem-card" data-poem="2">
+                    <div class="poem-glow"></div>
+                    <div class="poem-qm">"</div>
+                    <h3>Forever Yours</h3>
+                    <div class="poem-body">
+                        <p>If I had a flower for every time<br>You made my heart skip a beat,<br>I'd have a garden so sublime,<br>Where heaven and earth would meet.</p>
+                        <p>So take my hand and never let go,<br>Through storms and sunshine, rain and snow,<br>My love for you will only grow,<br>Forever yours, this much I know.</p>
+                    </div>
+                    <div class="poem-deco">🌸</div>
+                </div>
+            </div>
+            <div class="poems-nav">
+                <button class="poem-nav-btn" id="poem-prev"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M15 18l-6-6 6-6" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round"/></svg></button>
+                <div class="poem-dots" id="poem-dots"></div>
+                <button class="poem-nav-btn" id="poem-next"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M9 18l6-6-6-6" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round"/></svg></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 7: LOVE LETTER -->
+    <section id="love-letter" class="letter-section">
+        <div class="letter-bg-hearts">
+            <div class="lbh" style="--i:0">♥</div><div class="lbh" style="--i:1">♥</div><div class="lbh" style="--i:2">♥</div>
+        </div>
+        <div class="section-header light">
+            <span class="section-tag">💌 Love Letter</span>
+            <h2 class="section-title">A Letter For You</h2>
+            <p class="section-sub">Open delicately — it contains my heart</p>
+            <div class="title-accent light"><span>♥</span></div>
+        </div>
+        <div class="container">
+            <div class="envelope-wrapper" id="envelope">
+                <div class="envelope-3d">
+                    <div class="env-back"></div>
+                    <div class="env-letter" id="env-letter">
+                        <div class="letter-paper">
+                            <p class="lp-date">February 14, 2026</p>
+                            <h3 class="lp-greeting">My Dearest Love,</h3>
+                            <div class="lp-body">
+                                <p>As I sit here writing this, my heart overflows with emotions that words can barely capture. You came into my life like a beautiful dream I never want to wake up from.</p>
+                                <p>Every morning I wake up grateful that you exist. Your smile is my sunrise, your laugh is my favorite melody, and your love is the greatest gift I've ever received.</p>
+                                <p>You've taught me that love isn't just a feeling — it's a choice we make every day. And every day, <strong>I choose you</strong>. I choose your imperfections, your quirks, your dreams, and your fears. I choose all of you.</p>
+                                <p>On this Valentine's Day, I want you to know: you are my person. The one my heart recognizes. The one my soul has been searching for across lifetimes.</p>
+                                <p>I promise to love you on the easy days and the hard days. When the world is loud, I'll be your quiet place. When life gets heavy, I'll help you carry the weight.</p>
+                                <p class="lp-highlight">You are loved. You are cherished. You are my forever.</p>
+                            </div>
+                            <p class="lp-closing">With all my heart and soul,</p>
+                            <p class="lp-signature">Your Valentine 💕</p>
+                            <div class="lp-kiss">💋</div>
+                        </div>
+                    </div>
+                    <div class="env-front"><div class="env-seal">💝</div><p class="env-text">Click to Open</p></div>
+                    <div class="env-flap"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 8: PROMISES -->
+    <section id="promise" class="promise-section">
+        <div class="section-header">
+            <span class="section-tag">🤞 Vows</span>
+            <h2 class="section-title">My Promises To You</h2>
+            <p class="section-sub">Vows written with the sincerity of a thousand sunsets</p>
+            <div class="title-accent"><span>♥</span></div>
+        </div>
+        <div class="container">
+            <div class="promises-grid">
+                <div class="promise-card"><div class="pc-glow"></div><div class="pc-num">01</div><div class="pc-icon">🤗</div><h3>Always Be There</h3><p>In joy and sorrow, in laughter and tears — I promise to always be by your side, holding your hand through every chapter.</p><div class="pc-line"></div></div>
+                <div class="promise-card"><div class="pc-glow"></div><div class="pc-num">02</div><div class="pc-icon">👂</div><h3>Listen With My Heart</h3><p>I promise to hear not just your words, but the feelings behind them. Your thoughts matter, and I will always be your safe space.</p><div class="pc-line"></div></div>
+                <div class="promise-card"><div class="pc-glow"></div><div class="pc-num">03</div><div class="pc-icon">😄</div><h3>Make You Smile</h3><p>Even on the cloudiest days, I'll find ways to make your eyes sparkle and your lips curve into that beautiful smile I fell in love with.</p><div class="pc-line"></div></div>
+                <div class="promise-card"><div class="pc-glow"></div><div class="pc-num">04</div><div class="pc-icon">🌱</div><h3>Grow Together</h3><p>I promise our love will never stop evolving. Like a garden, I will nurture it, tend to it, and watch it bloom more beautifully each season.</p><div class="pc-line"></div></div>
+                <div class="promise-card"><div class="pc-glow"></div><div class="pc-num">05</div><div class="pc-icon">🛡️</div><h3>Protect Your Heart</h3><p>Your heart is the most precious thing I've ever held. I promise to handle it with the greatest care, to keep it safe, warm, and forever loved.</p><div class="pc-line"></div></div>
+                <div class="promise-card"><div class="pc-glow"></div><div class="pc-num">06</div><div class="pc-icon">♾️</div><h3>Love You Forever</h3><p>Not just today, not just tomorrow — but for every moment that exists. My love for you has no expiration date. It is infinite and eternal.</p><div class="pc-line"></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 9: REASONS -->
+    <section class="reasons-section">
+        <div class="section-header light">
+            <span class="section-tag">💖 Because</span>
+            <h2 class="section-title">Reasons I Love You</h2>
+            <p class="section-sub">Tap the heart to discover each reason</p>
+            <div class="title-accent light"><span>♥</span></div>
+        </div>
+        <div class="container">
+            <div class="reasons-stage">
+                <div class="reason-heart-btn" id="reasons-heart">
+                    <div class="rhb-rings"><div class="rhb-ring r1"></div><div class="rhb-ring r2"></div><div class="rhb-ring r3"></div></div>
+                    <div class="rhb-core"><span>💖</span></div>
+                    <p class="rhb-label">Tap Me</p>
+                </div>
+                <div class="reason-display" id="reason-display">
+                    <p class="reason-text" id="reason-text">Click the heart to see why I love you...</p>
+                    <div class="reason-progress"><div class="reason-bar" id="reason-bar"></div></div>
+                    <div class="reason-counter"><span id="reason-num">0</span> / <span id="reason-total">50</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 10: FINALE -->
+    <section class="finale-section" id="finale">
+        <div class="container">
+            <div class="finale-content">
+                <div class="finale-emoji">💝</div>
+                <h2 class="finale-title">Happy Valentine's Day</h2>
+                <div class="finale-text">
+                    <p>You are the reason I believe in love.</p>
+                    <p>You are the reason my heart beats.</p>
+                    <p>You are the reason I smile.</p>
+                    <p class="finale-bold">You are my everything.</p>
+                </div>
+                <div class="finale-hearts">
+                    <span style="--d:0">💕</span><span style="--d:1">💗</span><span style="--d:2">💖</span><span style="--d:3">💝</span><span style="--d:4">💘</span>
+                </div>
+                <button class="magnetic-btn btn-primary fireworks-btn" id="fireworks-btn">
+                    <span class="btn-bg"></span>
+                    <span class="btn-text">🎆 Launch Fireworks of Love</span>
+                </button>
+                <div class="finale-sig">
+                    <p>With Infinite Love,</p>
+                    <p class="sig-name">Your Forever Valentine</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-wave"><svg viewBox="0 0 1440 100" preserveAspectRatio="none"><path d="M0,40 C320,100 640,0 960,50 C1120,75 1280,25 1440,40 L1440,100 L0,100Z" fill="currentColor"/></svg></div>
+        <div class="footer-content">
+            <div class="footer-hearts-row"><span>💕</span><span>💗</span><span>💖</span><span>💝</span><span>💘</span></div>
+            <p class="footer-main">Made with <span class="footer-beat">❤️</span> for the love of my life</p>
+            <p class="footer-sub">Together Since Jan 1, 2025 • Valentine's Day 2026</p>
+            <div class="footer-sparkle">✨💕✨</div>
+        </div>
+    </footer>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <button class="lb-close" id="lb-close">&times;</button>
+        <button class="lb-prev" id="lb-prev"><svg viewBox="0 0 24 24" width="28" height="28"><path d="M15 18l-6-6 6-6" stroke="white" fill="none" stroke-width="2.5" stroke-linecap="round"/></svg></button>
+        <button class="lb-next" id="lb-next"><svg viewBox="0 0 24 24" width="28" height="28"><path d="M9 18l6-6-6-6" stroke="white" fill="none" stroke-width="2.5" stroke-linecap="round"/></svg></button>
+        <div class="lb-content">
+            <img src="" alt="" id="lb-img" class="lb-image">
+        </div>
+        <div class="lb-counter" id="lb-counter"></div>
+    </div>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" id="back-to-top">
+        <svg viewBox="0 0 24 24" width="18" height="18"><path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>
